@@ -1,0 +1,14 @@
+# Use the official Ubuntu 20.04 base image
+FROM ubuntu:20.04
+
+# Update package lists and install PostgreSQL
+RUN apt-get update && \
+    apt-get install -y postgresql && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Expose the default PostgreSQL port
+EXPOSE 5432
+
+# Start PostgreSQL and keep the process running in the foreground
+CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]

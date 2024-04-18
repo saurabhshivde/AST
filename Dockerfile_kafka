@@ -1,0 +1,13 @@
+# Use the official Kafka base image
+FROM wurstmeister/kafka:latest
+
+# Expose Kafka ports
+EXPOSE 9092
+
+# Environment variables for Kafka configuration
+ENV KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+ENV KAFKA_LISTENER_SECURITY_PROTOCOL_MAP=PLAINTEXT:PLAINTEXT
+ENV KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+
+# Start Zookeeper and Kafka
+CMD ["start-kafka.sh"]

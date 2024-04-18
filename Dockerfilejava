@@ -1,0 +1,14 @@
+# Use a base image that includes Java
+FROM openjdk:11-jre-slim
+
+# Create a directory to hold the application JAR file
+WORKDIR /usr/src/app
+
+# Copy the JAR file into the container
+COPY app.jar .
+
+# Expose the port that the Java application listens on
+EXPOSE 8080
+
+# Command to run the Java application
+CMD ["java", "-jar", "app.jar"]
